@@ -1,1 +1,4 @@
-print("Lab 2, back to python programming")
+def main():
+    print("why the fk does python use indentation instead of semicolons :(")
+
+main()
