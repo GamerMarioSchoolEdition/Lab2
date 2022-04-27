@@ -1,11 +1,14 @@
+import statistics
 def display_main_menu():
     print("Enter some numbers separated by commas (e.g. 5, 67, 32)")
     num = get_user_input()
     avg = calc_average_temp(num)
     minmax = calc_minmax_temp(num)
+    median = calc_median_temp(num)
     print("Average temp is : ", end='')
     print(avg, "C")
-    print("minimun and maximumtemp is ", minmax)
+    print("minimun and maximum temp is ", minmax)
+    print("median is : ", median)
 
 def get_user_input():
     inp = input("Enter : ")
@@ -22,8 +25,6 @@ def calc_average_temp(num):
     return avg
 
 def calc_minmax_temp(num):
-    elements = len(num)
-    total = 0
     min = 1000000
     max = 0
     for x in num:
@@ -33,6 +34,11 @@ def calc_minmax_temp(num):
 
         elif(num1 > max):
             max = num1
-
     return min, max
+
+def calc_median_temp(num):
+    y = [float(x) for x in num]
+    z = statistics.median(y)
+    return z
+
 display_main_menu()
