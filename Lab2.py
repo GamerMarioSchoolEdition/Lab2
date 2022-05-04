@@ -1,5 +1,5 @@
 import statistics
-def display_main_menu():
+def main():
     print("Enter some numbers separated by commas (e.g. 5, 67, 32)")
     num = get_user_input()
     avg = calc_average_temp(num)
@@ -13,32 +13,34 @@ def display_main_menu():
 def get_user_input():
     inp = input("Enter : ")
     x = inp.split(",")
-    return x
+    float_num = []
+    for item in x:
+        float_num.append(float(item))
+    return float_num
 
 def calc_average_temp(num):
     elements = len(num)
     total = 0
     for x in num:
-        num1 = float(x)
-        total = total + num1
+        total = total + x
     avg = total / elements
+    avg = str(round(avg, 2))
     return avg
 
 def calc_minmax_temp(num):
     min = 1000000
     max = 0
     for x in num:
-        num1 = float(x)
-        if(num1 < min):
-            min = num1
+        if(x < min):
+            min = x
 
-        elif(num1 > max):
-            max = num1
+        elif(x > max):
+            max = x
     return min, max
 
 def calc_median_temp(num):
-    y = [float(x) for x in num]
-    z = statistics.median(y)
+    z = statistics.median(num)
     return z
 
-display_main_menu()
+if __name__ == "__main__":
+    main()
